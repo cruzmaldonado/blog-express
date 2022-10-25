@@ -1,6 +1,6 @@
 const Users = require('./users.models')
-const Posts = require('./users.models')
-const Categories = require('./users.models')
+const Posts = require('./post.models')
+const Categories = require('./categories.models')
 
 const initModels = () => {
     // * relacion 1 a muchos

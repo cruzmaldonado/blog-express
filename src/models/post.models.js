@@ -19,10 +19,11 @@ const Post =db.define("post",{
         type:DataTypes.TEXT,
         allowNull:false
     },
-    createdBy:{
+    // createdBy:{   //asi es mejor pero a sequelize no le gusta
+        userId:{
         type:DataTypes.UUID,
         allowNull:false,
-        field:"create_by",
+        field:"user_id",
         // ?para llave foranea de Users
         references:{
             key:"id",  //nombre de la columna

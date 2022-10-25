@@ -13,8 +13,10 @@
    <!--! se vera nustra respuesta -->
     ``` json
     {
-    "total":68, //total de publciaciones
-    //*esto para paginacion
+        
+    <!--? total de publciaciones -->
+    "total":68, 
+    <!--? esto para paginacion -->
     "prev":"localhost:9000/api/v1/posts?start=51&limit=60",
     "next":"localhost:9000/api/v1/posts?start=61&limit=68",
     "data":[
@@ -23,7 +25,8 @@
             "title" :"ejemplo",
             "content":"lorem ipsum",
             "createBy":{
-                "id":"4d8f4592-2847-46e8-8735-50d16c702f56", //id usuario
+                <!--? id usuario -->
+                "id":"4d8f4592-2847-46e8-8735-50d16c702f56", 
                 "name":"sahid",
                 "email":"sahid@gmail.com"
             },
@@ -37,3 +40,19 @@
     }
 
     ``` 
+
+    /api/v1
+
+    /users
+        -/me
+            -/me/posts
+            -/me/posts/:id
+        -/:id
+
+    /categories
+        -/:id
+        -/:id/posts
+
+    /posts
+        -/:id
+        
