@@ -5,7 +5,8 @@ const Categories = require("../models/categories.models")
 
 const getAllPosts = async(offset,limit) => {
     //* ahora vamos a usar Joins en findAll
-    const data= await Posts.findAll({
+// const data= await Posts.findAll({ para total post    
+    const data= await Posts.findAndCountAll({
         offset,
         limit,
         attributes:{

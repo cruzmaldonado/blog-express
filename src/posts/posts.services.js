@@ -8,17 +8,23 @@ const getAllPosts = (req,res)=>{
     //?localhost:9000/api/vi/posts?
 
     //? localhost:9000/api/v1/posts?offset=0&limit=20
-    const offset=req.query.offset || 0
-    const limit=req.query.limit|| 0
+    const offset=Number(req.query.offset) || 0
+    const limit=Number(req.query.limit)|| 10
     
-
+    const urlBase =`${host}/api/v1/posts`
 
     postController.getAllPosts(offset,limit)
     .then(data=>{
+        const nextPage = data.count - offset >= limit ? `${urlBase}?offset=${offset + limit}&limit=${limit}` : null
+        const prePage= offset- limit >=0 ? `${urlBase}?offset=${offset-limit}&limit=${limit}`:null
         res.status(200).json({
-            offset,
+            next:nextPage,
+            prev:prePage,
+            items:data.count,
+            urlBase, 
+            offset, 
             limit,
-            result:data
+            results:data.rows
         })
     })
     .catch(err=>{
