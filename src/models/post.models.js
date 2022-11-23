@@ -27,7 +27,7 @@ const Post =db.define("post",{
         // ?para llave foranea de Users
         references:{
             key:"id",  //nombre de la columna
-            model:Users //Nombre tabla pricipal  
+            model:Users //Nombre tabla pricipal  (PK)
         }
     },
     // ?aunque type en category es serial aca es int

@@ -96,7 +96,7 @@ const deleteUser = (req, res) => {
     .deleteUser(id)
     .then((data) => {
       if (data) {
-        res.status(204).json();
+        res.status(204).json({message:"Users deleter"});
       } else {
         res.status(404).json({ message: "Invalid ID" });
       }
@@ -129,7 +129,7 @@ const patchMyUser = (req, res) => {
 
   usersControllers
     .updateUser(id, { firstName, lastName, phone, birthday, gender, country })
-    .then(() => {
+    .then((response) => {
       res.status(200).json({ message: `Your user was edited succesfully!` });
     })
     .catch((err) => {

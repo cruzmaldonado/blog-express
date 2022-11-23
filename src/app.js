@@ -1,9 +1,14 @@
 //? Dependencies
 const express = require('express');
 const db = require('./utils/database')
+const swaggerUi= require("swagger-ui-express")
+const swaggerJsDoc=require("swagger-jsdoc")
+const Cors = require ("cors")
 
 //? Files
 const {port} = require('./config');
+const swaggerDoc=require("../swagger.json")
+
 //* Routes
 const userRouter = require('./users/users.router')
 const authRouter = require('./auth/auth.router')
@@ -15,6 +20,7 @@ const initModels = require('./models/initModels')
 
 //? Initial Configs
 const app = express()
+app.use(Cors()) 
 
 app.use(express.json())
 
@@ -43,6 +49,8 @@ app.get('/',(req, res) => {
         users: `localhost:${port}/api/v1/users`
     })
 })
+// Ruta para documentacion swagger
+app.use("/api/v1/docs",swaggerUi.serve,swaggerUi.setup(swaggerDoc))
 
 app.use('/api/v1/users', userRouter)
 app.use('/api/v1/auth', authRouter)
