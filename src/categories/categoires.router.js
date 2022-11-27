@@ -10,7 +10,7 @@ router.route('/') //? /api/v1/categories
 router.get('/:id', categoryServices.getCategoryById)
 
 router.get('/:id/posts', getPostsByCategory)
-router.get('/:id/posts', getPostsByCategory)
+
 
 
 
